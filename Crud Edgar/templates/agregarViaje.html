@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Viaje</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            width: calc(100% - 16px);
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Agregar Nuevo Viaje</h2>
+        <a href="{{ url_for('dashboard') }}">Volver al Panel de Control</a>
+    </header>
+
+    <div class="form-container">
+        <form action="{{ url_for('agregarViaje') }}" method="POST">
+            <label for="folio">Folio:</label>
+            <input type="text" id="folio" name="folio" required>
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <label for="origen_modelo">Origen-Modelo:</label>
+            <input type="text" id="origen_modelo" name="origen_modelo" required>
+
+            <label for="destinatario">Destinatario:</label>
+            <input type="text" id="destinatario" name="destinatario" required>
+
+            <label for="chofer">Chofer:</label>
+            <input type="text" id="chofer" name="chofer" required>
+
+            <label for="no_pedido">Número de Pedido:</label>
+            <input type="text" id="no_pedido" name="no_pedido" required>
+
+            <label for="folio_ida">Folio Ida:</label>
+            <input type="text" id="folio_ida" name="folio_ida" required>
+
+            <label for="placas">Placas:</label>
+            <input type="text" id="placas" name="placas" required>
+
+            <label for="unidad">Unidad:</label>
+            <input type="text" id="unidad" name="unidad" required>
+
+            <label for="gastos_ocupados">Gastos Ocupados:</label>
+            <input type="text" id="gastos_ocupados" name="gastos_ocupados" required>
+
+            <label for="gastos_depositados">Gastos Depositados:</label>
+            <input type="text" id="gastos_depositados" name="gastos_depositados" required>
+
+            <label for="diferencia">Diferencia:</label>
+            <input type="text" id="diferencia" name="diferencia" required>
+
+            <label for="carga_1">Carga 1:</label>
+            <input type="text" id="carga_1" name="carga_1" required>
+
+            <label for="carga_2">Carga 2:</label>
+            <input type="text" id="carga_2" name="carga_2" required>
+
+            <label for="carga_3">Carga 3:</label>
+            <input type="text" id="carga_3" name="carga_3" required>
+
+            <label for="total_litros">Total Litros:</label>
+            <input type="text" id="total_litros" name="total_litros" required>
+
+            <label for="km_recorridos">Kilómetros Recorridos:</label>
+            <input type="text" id="km_recorridos" name="km_recorridos" required>
+
+            <button type="submit">Agregar Viaje</button>
+        </form>
+    </div>
+</body>
+</html>

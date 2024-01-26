@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Viaje</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .details-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Detalles del Viaje</h2>
+        <a href="{{ url_for('dashboard') }}">Volver al Panel de Control</a>
+    </header>
+
+    <div class="details-container">
+        <p><strong>ID:</strong> {{ viaje.id }}</p>
+        <p><strong>Folio:</strong> {{ viaje.folio }}</p>
+        <p><strong>Fecha:</strong> {{ viaje.fecha }}</p>
+        <p><strong>Origen-Modelo:</strong> {{ viaje.origen_modelo }}</p>
+        <p><strong>Destinatario:</strong> {{ viaje.destinatario }}</p>
+        <p><strong>Chofer:</strong> {{ viaje.chofer }}</p>
+        <p><strong>Número de Pedido:</strong> {{ viaje.no_pedido }}</p>
+        <p><strong>Folio Ida:</strong> {{ viaje.folio_ida }}</p>
+        <p><strong>Placas:</strong> {{ viaje.placas }}</p>
+        <p><strong>Unidad:</strong> {{ viaje.unidad }}</p>
+        <p><strong>Gastos Ocupados:</strong> {{ viaje.gastos_ocupados }}</p>
+        <p><strong>Gastos Depositados:</strong> {{ viaje.gastos_depositados }}</p>
+        <p><strong>Diferencia:</strong> {{ viaje.diferencia }}</p>
+        <p><strong>Carga 1:</strong> {{ viaje.carga_1 }}</p>
+        <p><strong>Carga 2:</strong> {{ viaje.carga_2 }}</p>
+        <p><strong>Carga 3:</strong> {{ viaje.carga_3 }}</p>
+        <p><strong>Total Litros:</strong> {{ viaje.total_litros }}</p>
+        <p><strong>Kilómetros Recorridos:</strong> {{ viaje.km_recorridos }}</p>
+    </div>
+</body>
+</html>

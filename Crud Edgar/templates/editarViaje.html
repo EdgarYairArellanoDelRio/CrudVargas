@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Viaje</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Editar Viaje</h2>
+        <a href="{{ url_for('dashboard') }}">Volver al Panel de Control</a>
+    </header>
+
+    <div class="form-container">
+        <form action="{{ url_for('editarViaje', viaje_id=viaje.id) }}" method="POST">
+            <label for="folio">Folio:</label>
+            <input type="text" id="nuevo_folio" name="nuevo_folio" value="{{ viaje.folio }}" required>
+
+            <label for="fecha">Fecha:</label>
+            <input type="text" id="nueva_fecha" name="nueva_fecha" value="{{ viaje.fecha }}" required>
+
+            <label for="origen_modelo">Origen-Modelo:</label>
+            <input type="text" id="nuevo_origen_modelo" name="nuevo_origen_modelo" value="{{ viaje.origen_modelo }}" required>
+
+            <label for="destinatario">Destinatario:</label>
+            <input type="text" id="nuevo_destinatario" name="nuevo_destinatario" value="{{ viaje.destinatario }}" required>
+
+            <label for="chofer">Chofer:</label>
+            <input type="text" id="nuevo_chofer" name="nuevo_chofer" value="{{ viaje.chofer }}" required>
+
+            <label for="no_pedido">Número de Pedido:</label>
+            <input type="text" id="nuevo_no_pedido" name="nuevo_no_pedido" value="{{ viaje.no_pedido }}" required>
+
+            <label for="folio_ida">Folio Ida:</label>
+            <input type="text" id="nuevo_folio_ida" name="nuevo_folio_ida" value="{{ viaje.folio_ida }}" required>
+
+            <label for="placas">Placas:</label>
+            <input type="text" id="nuevo_placas" name="nuevo_placas" value="{{ viaje.placas }}" required>
+
+            <label for="unidad">Unidad:</label>
+            <input type="text" id="nuevo_unidad" name="nuevo_unidad" value="{{ viaje.unidad }}" required>
+
+            <label for="gastos_ocupados">Gastos Ocupados:</label>
+            <input type="text" id="nuevo_gastos_ocupados" name="nuevo_gastos_ocupados" value="{{ viaje.gastos_ocupados }}" required>
+
+            <label for="gastos_depositados">Gastos Depositados:</label>
+            <input type="text" id="nuevo_gastos_depositados" name="nuevo_gastos_depositados" value="{{ viaje.gastos_depositados }}" required>
+
+            <label for="diferencia">Diferencia:</label>
+            <input type="text" id="nuevo_diferencia" name="nuevo_diferencia" value="{{ viaje.diferencia }}" required>
+
+            <label for="carga_1">Carga 1:</label>
+            <input type="text" id="nuevo_carga_1" name="nuevo_carga_1" value="{{ viaje.carga_1 }}" required>
+
+            <label for="carga_2">Carga 2:</label>
+            <input type="text" id="nuevo_carga_2" name="nuevo_carga_2" value="{{ viaje.carga_2 }}" required>
+
+            <label for="carga_3">Carga 3:</label>
+            <input type="text" id="nuevo_carga_3" name="nuevo_carga_3" value="{{ viaje.carga_3 }}" required>
+
+            <label for="total_litros">Total Litros:</label>
+            <input type="text" id="nuevo_total_litros" name="nuevo_total_litros" value="{{ viaje.total_litros }}" required>
+
+            <label for="km_recorridos">Kilómetros Recorridos:</label>
+            <input type="text" id="nuevo_km_recorridos" name="nuevo_km_recorridos" value="{{ viaje.km_recorridos }}" required>
+
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+</body>
+</html>

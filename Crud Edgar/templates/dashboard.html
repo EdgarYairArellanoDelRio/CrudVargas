@@ -1,0 +1,201 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .dashboard-container {
+            max-width: 800px;
+            margin-left: 15px;
+            margin-top: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .NuevoViaje {
+            float: right;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            margin-bottom: 20px;
+            display: inline-block;
+            text-align: left;
+        }
+
+        form label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        form input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        form button {
+            padding: 8px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .actions a {
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 5px 19px;
+            border: 1px solid #007BFF;
+            color: #007BFF;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .details-btn {
+            border: 1px solid #007BFF;
+            color: #007BFF;
+            margin-right: 10px;
+        }
+
+        .delete-btn {
+            border: 1px solid #FF0000;
+            color: #FF0000;
+            margin-right: 10px;
+        }
+
+        .edit-btn {
+            border: 1px solid #00FF00;
+            color: #00FF00;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Bienvenido al Panel de Control</h2>
+        <a href="{{ url_for('logout') }}">Cerrar Sesión</a>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Contenido del panel de control -->
+        
+        <form action="{{ url_for('dashboard') }}" method="GET">
+            <label for="search">Buscar:</label>
+            <input type="text" id="search" name="search" placeholder="Ingrese término de búsqueda">
+            <button type="submit">Buscar</button>
+        </form>
+        
+        <!-- Botón o enlace para agregar un nuevo viaje -->
+        <a class="NuevoViaje" href="{{ url_for('agregarViaje') }}">Agregar Nuevo Viaje</a>
+
+        <a href="{{ url_for('descargar_excel') }}" class="btn btn-success">Descargar Excel</a>
+
+
+        <!-- Tabla para mostrar los viajes registrados -->
+        <h3>Viajes Registrados:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Fecha</th>
+                    <th>Origen-Modelo</th>
+                    <th>Destinatario</th>
+                    <th>Chofer</th>
+                    <th>Número de Pedido</th>
+                    <th>Folio Ida</th>
+                    <th>Placas</th>
+                    <th>Unidad</th>
+                    <th>Gastos Ocupados</th>
+                    <th>Gastos Depositados</th>
+                    <th>Diferencia</th>
+                    <th>Carga 1</th>
+                    <th>Carga 2</th>
+                    <th>Carga 3</th>
+                    <th>Total Litros</th>
+                    <th>Kilómetros Recorridos</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for viaje in viajes %}
+                    <tr>
+                        <td>{{ viaje.folio }}</td>
+                        <td>{{ viaje.fecha }}</td>
+                        <td>{{ viaje.origen_modelo }}</td>
+                        <td>{{ viaje.destinatario }}</td>
+                        <td>{{ viaje.chofer }}</td>
+                        <td>{{ viaje.no_pedido }}</td>
+                        <td>{{ viaje.folio_ida }}</td>
+                        <td>{{ viaje.placas }}</td>
+                        <td>{{ viaje.unidad }}</td>
+                        <td>{{ viaje.gastos_ocupados }}</td>
+                        <td>{{ viaje.gastos_depositados }}</td>
+                        <td>{{ viaje.diferencia }}</td>
+                        <td>{{ viaje.carga_1 }}</td>
+                        <td>{{ viaje.carga_2 }}</td>
+                        <td>{{ viaje.carga_3 }}</td>
+                        <td>{{ viaje.total_litros }}</td>
+                        <td>{{ viaje.km_recorridos }}</td>
+                        <td class="actions">
+                            <!-- Botones de acciones con estilos -->
+                            <a href="{{ url_for('detalleViaje', viaje_id=viaje.id) }}">Detalles</a>
+                            <p></p>
+                            <a href="{{ url_for('editarViaje', viaje_id=viaje.id) }}">Editar</a>
+                            <p></p>
+                            <a href="{{ url_for('eliminarViaje', viaje_id=viaje.id) }}" onclick="return confirm('¿Seguro que deseas eliminar este viaje?')">Eliminar</a>
+                        
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
